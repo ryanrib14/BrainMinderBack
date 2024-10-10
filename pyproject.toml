@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "brainminderback"
+version = "0.1.0"
+description = ""
+authors = ["Ryan"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+alembic = "1.13.1"
+alembic-utils = "0.8.2"
+fastapi = "0.111.1"
+gunicorn = "^22.0.0"
+mypy = "^1.11.1"
+psycopg2-binary = "^2.9.9"
+python = "^3.10"
+sqlalchemy = {extras = ["mypy"], version = "^2.0.32"}
+uvicorn = {extras = ["standard"], version = "^0.30.4"}
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

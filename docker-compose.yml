@@ -1,0 +1,38 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./app:/code/app
+      - ./alembic:/code/alembic
+      - ./alembic.ini:/code/alembic.ini
+    ports:
+      - 8000:8000
+    networks:
+      - iag-template
+    env_file:
+      - .env
+
+  postgres:
+    image: postgres:16
+    volumes:
+      - postgres-data:/var/lib/postgresql/data_template
+    environment:
+      - POSTGRES_DB=testdb
+      - POSTGRES_USER=testuser
+      - POSTGRES_PASSWORD=testpwd
+    networks:
+      - iag-template
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+
+volumes:
+  postgres-data:
+
+networks:
+  iag-template:
+    name: iag-template
+    driver: bridge
